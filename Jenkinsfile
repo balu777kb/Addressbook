@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/devopscbabu/DevOpsAddressBook.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://https://github.com/balu777kb/Addressbook.git']]])
             }
         }
         stage('Compile') {
@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Docker Push') {
             steps { 
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                withCredentials([string(credentialsId: 'docker', variable: 'dockerHubPwd')]) {
                 sh 'docker login -u cbabu85 -p ${dockerHubPwd}'
                   }
                 sh 'docker push cbabu85/devopsaddressbook'
